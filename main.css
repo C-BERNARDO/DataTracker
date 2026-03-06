@@ -512,6 +512,35 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   gap: 12px;
 }
 
+.rc-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.gender-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gender-icon.female {
+  color: #eb2f96;
+  background: #fff0f6;
+  border: 1px solid #ffadd2;
+}
+
+.gender-icon.male {
+  color: #1677ff;
+  background: var(--primary-bg);
+  border: 1px solid var(--primary-border);
+}
+
 .rc-name {
   font-size: 15px;
   font-weight: 600;

@@ -27,6 +27,7 @@ const matchLabel       = document.getElementById('matchLabel');
 /* ── Column definitions ────────────────────────────────────── */
 const COLUMN_DEFS = [
   { key: 'name',       fileCol: 'Name',                            label: 'Name',                   section: null,           valueClass: ''         },
+  { key: 'gender',     fileCol: 'Gender',                          label: 'Gender',                 section: null,           valueClass: ''         },
   { key: 'chcode',     fileCol: 'chcode',                          label: 'CH Code',                section: 'identity',     valueClass: 'v-chcode' },
   { key: 'accountKey', fileCol: 'Account Key',                     label: 'Account Key',            section: 'identity',     valueClass: 'v-acckey' },
   { key: 'birthday',   fileCol: 'Birthdate',                       label: 'Birthday',               section: 'identity',     valueClass: 'v-birthday'},
@@ -320,7 +321,10 @@ function createCard(record, query, index) {
 
   card.innerHTML = `
     <div class="rc-header">
-      <div class="rc-name">${highlightMatch(record.name, query)}</div>
+      <div class="rc-name-row">
+        ${genderIcon(record.gender)}
+        <div class="rc-name">${highlightMatch(record.name, query)}</div>
+      </div>
       <div class="rc-index">
         <span class="rc-badge">#${index}</span>
       </div>
@@ -410,6 +414,28 @@ function formatAmount(raw) {
 }
 
 function showError(msg) { alert('⚠ ' + msg); }
+
+/* ── Gender icon ───────────────────────────────────────────── */
+function genderIcon(g) {
+  const v = (g || '').trim().toUpperCase();
+  if (v === 'F') {
+    return `<span class="gender-icon female" title="Female">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="6" r="4" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M8 10v4M6 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </span>`;
+  }
+  if (v === 'M') {
+    return `<span class="gender-icon male" title="Male">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="9.5" r="4" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M10 6l4-4M14 2h-3.5M14 2v3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>`;
+  }
+  return '';
+}
 
 /* ── Section icons ─────────────────────────────────────────── */
 function iconIdentity() {
