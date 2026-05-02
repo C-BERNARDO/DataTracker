@@ -39,6 +39,7 @@ const COLUMN_DEFS = [
   { key: 'delayDays',     fileCol: 'Delay Days',                        label: 'Delay Days',              section: 'status',       valueClass: 'v-delay'   },
   { key: 'totalOB',       fileCol: 'Total Outstanding',                 label: 'Total OB',                section: 'status',       valueClass: 'v-ob'      },
   { key: 'stmtMinPay',    fileCol: 'Statement Minum Payment',           label: 'Statement Min. Payment',  section: 'status',       valueClass: 'v-min'     },
+  { key: 'stmtBalance',   fileCol: 'Statement Balance',                 label: 'Statement Balance',       section: 'status',       valueClass: 'v-ob'      },
   { key: 'stmtOverdue',   fileCol: 'Statement Overdue Amount',          label: 'Statement Overdue Amount',section: 'status',       valueClass: 'v-pastdue' },
   { key: 'pastDue',       fileCol: 'Past Due Amount (Base Currency)',   label: 'Past Due',                section: 'status',       valueClass: 'v-pastdue' },
   { key: 'install01',     fileCol: 'Installment Amount (01)', label: 'Installment (01)', section: 'installments', valueClass: 'v-install'},
@@ -470,7 +471,7 @@ function fmtDate(d) {
 }
 
 /* ── Amount formatter ──────────────────────────────────────── */
-const AMOUNT_KEYS = new Set(['totalOB', 'stmtMinPay', 'stmtOverdue', 'pastDue', 'install01', 'install02', 'install03', 'install04']);
+const AMOUNT_KEYS = new Set(['totalOB', 'stmtMinPay', 'stmtBalance', 'stmtOverdue', 'pastDue', 'install01', 'install02', 'install03', 'install04']);
 
 function formatAmount(raw) {
   if (!raw || !raw.trim()) return '';
