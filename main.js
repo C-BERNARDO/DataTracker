@@ -36,7 +36,9 @@ const COLUMN_DEFS = [
   { key: 'cardNumber',  fileCol: 'Contract Number', label: 'Card Number', section: 'identity', valueClass: 'v-card'    },
   { key: 'birthday',   fileCol: 'Birthdate',                       label: 'Birthday',               section: 'identity',     valueClass: 'v-birthday'},
   { key: 'cycle',      fileCol: 'Repaymen Cycle',                 label: 'Cycle',                  section: 'identity',     valueClass: 'v-cycle'  },
+  { key: 'productDesc', fileCol: 'Product Description',           label: 'Product Description',    section: 'identity',     valueClass: 'v-product' },
   { key: 'delayDays',     fileCol: 'Delay Days',                        label: 'Delay Days',              section: 'status',       valueClass: 'v-delay'   },
+  { key: 'accountLimit',  fileCol: 'Account Limit',                     label: 'Account Limit',           section: 'status',       valueClass: 'v-limit'   },
   { key: 'totalOB',       fileCol: 'Total Outstanding',                 label: 'Total OB',                section: 'status',       valueClass: 'v-ob'      },
   { key: 'stmtMinPay',    fileCol: 'Statement Minum Payment',           label: 'Statement Min. Payment',  section: 'status',       valueClass: 'v-min'     },
   { key: 'stmtBalance',   fileCol: 'Statement Balance',                 label: 'Statement Balance',       section: 'status',       valueClass: 'v-ob'      },
@@ -471,7 +473,7 @@ function fmtDate(d) {
 }
 
 /* ── Amount formatter ──────────────────────────────────────── */
-const AMOUNT_KEYS = new Set(['totalOB', 'stmtMinPay', 'stmtBalance', 'stmtOverdue', 'pastDue', 'install01', 'install02', 'install03', 'install04']);
+const AMOUNT_KEYS = new Set(['accountLimit', 'totalOB', 'stmtMinPay', 'stmtBalance', 'stmtOverdue', 'pastDue', 'install01', 'install02', 'install03', 'install04']);
 
 function formatAmount(raw) {
   if (!raw || !raw.trim()) return '';
